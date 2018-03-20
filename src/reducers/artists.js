@@ -5,9 +5,9 @@ const artists = (state = [], action) => {
             console.log('Searching for artist ', action.text);
             return state;
         case 'SEARCH_ARTIST_SUCCESS':
-            console.log('Search finished');
-            return {...state, artists: action.payload};
-        case 'SELECT_ARTIST':
+            console.log('Search finished: ', action.payload);
+            return action.payload;
+        case 'SHOW_ARTIST_CDS':
             return state.map(artist =>
                 (artist.id === action.id)
                     ? {...artist, selected: true}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {searchArtist, searchArtistSuccess, toggleTodo} from '../actions'
+import {searchArtist, searchArtistSuccess} from '../actions'
 
 function fetchArtists(searchText) {
     return (dispatch) => {
@@ -25,8 +25,7 @@ const Search = ({ dispatch }) => {
         if (!input.value.trim()) {
           return
         }
-        dispatch(searchArtist(input.value))
-          fetchArtists(input.value);
+        dispatch(fetchArtists(input.value))
         input.value = ''
       }}>
         <input ref={node => input = node} />
@@ -37,19 +36,5 @@ const Search = ({ dispatch }) => {
     </div>
   )
 };
-
-/*const mapStateToProps = state => ({
-    artists: state.artists
-})
-
-const mapDispatchToProps = dispatch => ({
-    fetchArtists: (searchText) => dispatch(fetchArtists(searchText)),
-    searchArtist
-});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(Search)*/
 
 export default connect()(Search)

@@ -1,17 +1,16 @@
 import React from 'react'
 //import PropTypes from 'prop-types'
 import Artist from '../components/Artist'
-import {searchArtist, searchArtistSuccess} from '../actions'
+import {showArtistsCds} from '../actions'
 import {connect} from "react-redux";
 
-
-const ArtistList = ({ artists = [], selectArtist }) => (
+const ArtistList = ({ artists = [], showArtistsCds}) => (
     <ul>
         {artists.map(artist =>
             <Artist
                 key={artist.artistId}
-                {...artists}
-                onClick={() => searchArtist(artist.artistId)}
+                artistName={artist.artistName}
+                onClick={() => showArtistsCds(artist.artistId)}
             />
         )}
     </ul>
@@ -31,8 +30,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    selectArtist: id => dispatch(searchArtist(id)),
-    /*searchArtist: searchText => dispatch(fetchArtists(searchText))*/
+    showArtistsCds: id => dispatch(showArtistsCds(id))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistList)
