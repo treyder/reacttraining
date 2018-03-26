@@ -9,9 +9,14 @@ export const searchArtistSuccess = payload => ({
   payload
 })
 
-export const showArtistsCds = id => ({
-    type: 'SHOW_ARTIST_CDS',
+export const searchArtistCds = id => ({
+    type: 'SEARCH_ARTIST_CDS',
     id
+})
+
+export const searchArtistCdsSuccess = payload => ({
+    type: "SEARCH_ARTIST_CDS_SUCCESS",
+    payload
 })
 
 export const setVisibilityFilter = filter => ({
