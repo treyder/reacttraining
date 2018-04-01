@@ -8,7 +8,6 @@ function fetchCds(artistId) {
     return (dispatch) => {
         console.log('running fetchCds()');
         dispatch(searchArtistCds(artistId));
-        //
         return fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=album`)
             .then(response => response.json())
             .then(data => {
