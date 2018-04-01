@@ -1,30 +1,16 @@
 import React from 'react'
 //import PropTypes from 'prop-types'
 import Artist from '../components/Artist'
-import {searchArtistCds, searchArtistCdsSuccess} from '../actions'
 import {connect} from "react-redux";
 
-function fetchCds(artistId) {
-    return (dispatch) => {
-        console.log('running fetchCds()');
-        dispatch(searchArtistCds(artistId));
-        //
-        return fetch(`https://itunes.apple.com/lookup?id=${artistId}&entity=album`)
-            .then(response => response.json())
-            .then(data => {
-                console.log('Search for cds finished', data.results);
-                dispatch(searchArtistCdsSuccess(data.results));
-            });
-    };
-}
 
-const ArtistList = ({ artists = [], dispatch}) => (
+const ArtistList = ({ artists = []}) => (
     <ul>
         {artists.map(artist =>
             <Artist
                 key={artist.artistId}
+                artistId={artist.artistId}
                 artistName={artist.artistName}
-                onClick={() => dispatch(fetchCds(artist.artistId))}
             />
         )}
     </ul>
@@ -40,11 +26,12 @@ const ArtistList = ({ artists = [], dispatch}) => (
 }*/
 
 const mapStateToProps = state => ({
-    artists: state.artists
+    artists: state.artists,
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    onClick: () => dispatch(searchArtistCds(ownProps.id))
+const mapDispatchToProps = dispatch => ({
+    //fetchCds: id => dispatch(searchArtistCds(id))
+    //onClick: id => dispatch(searchArtistCds(ownProps.id))
     //searchArtistCds: id => dispatch(searchArtistCds(id))
 })
 

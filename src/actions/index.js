@@ -9,9 +9,9 @@ export const searchArtistSuccess = payload => ({
   payload
 })
 
-export const searchArtistCds = id => ({
+export const searchArtistCds = artistId => ({
     type: 'SEARCH_ARTIST_CDS',
-    id
+    artistId
 })
 
 export const searchArtistCdsSuccess = payload => ({
