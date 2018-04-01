@@ -2,7 +2,7 @@
 const cds = (state = [], action) => {
     switch (action.type) {
         case 'SEARCH_ARTIST_CDS':
-//            fetchCds(action.id);
+            console.log('CDs search started');
             return state;
         case 'SEARCH_ARTIST_CDS_SUCCESS':
             console.log('CDs search finished: ', action.payload);

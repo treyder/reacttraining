@@ -13,7 +13,9 @@ function fetchCds(artistId) {
             .then(response => response.json())
             .then(data => {
                 console.log('Search for cds finished', data.results);
-                dispatch(searchArtistCdsSuccess(data.results));
+                let filteredData = data.results.filter((item) => item.wrapperType === 'collection');
+                console.log('filtered cds: ', filteredData)
+                dispatch(searchArtistCdsSuccess(filteredData));
             });
     };
 }
